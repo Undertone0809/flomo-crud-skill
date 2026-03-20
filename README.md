@@ -1,3 +1,5 @@
+better agent skill for mac [flomo-local-api-skill](https://github.com/Undertone0809/flomo-local-api-skill)
+
 # flomo-crud-skill
 
 一个面向 Agent Skill 用户的 flomo Web 自动化 Skill。  它通过 Chrome MCP 操作 `https://v.flomoapp.com/mine` 页面，在已登录会话中完成 memo 的 CRUD（查询、创建、编辑、删除）。
