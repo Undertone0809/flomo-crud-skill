@@ -1,4 +1,4 @@
-better agent skill for mac [flomo-local-api-skill](https://github.com/Undertone0809/flomo-local-api-skill)
+⚠️ Better agent skill for mac [flomo-local-api-skill](https://github.com/Undertone0809/flomo-local-api-skill)
 
 # flomo-crud-skill
 
