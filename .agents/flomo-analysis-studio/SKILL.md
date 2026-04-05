@@ -40,6 +40,31 @@ If these are not true, do not fake the workflow with Web UI automation. Tell the
 
 This skill decides what is worth analyzing, structures the analysis, compares time windows, and turns memo evidence into higher-level insight.
 
+## How To Work
+
+This skill should behave like an analysis director, not a raw memo reader.
+
+The right sequence is:
+
+1. pick or infer the most useful lens
+2. gather just enough flomo evidence through `flomo-local-api`
+3. synthesize patterns across time windows
+4. produce a sharp, evidence-based analysis
+5. suggest the next 2-3 lenses worth exploring
+
+Before going deep, consult:
+
+- `references/query-strategy.md` for how to use `flomo-local-api` well
+- `references/output-template.md` for the fixed report structure
+- the specific lens reference file for the chosen mode
+
+Do not skip the lens reference. Each lens file contains:
+
+- what evidence is strong enough for that lens
+- which `flomo-local-api` calls are worth running
+- how to move from memo material to a useful interpretation
+- which failure modes to avoid
+
 ## Analysis Modes
 
 This skill supports 6 default lenses.
@@ -54,6 +79,9 @@ Focus:
 - value and preference signals
 - short-term vs long-term changes
 
+Reference:
+- `references/overview.md`
+
 ### 2. ACT Lens
 
 Use when the user is stuck in overreaction, rumination, self-judgment, or repeated emotional loops.
@@ -66,6 +94,9 @@ Focus:
 
 Do not present this as therapy or treatment. This is a reflection lens inspired by ACT ideas, not clinical care.
 
+Reference:
+- `references/act-lens.md`
+
 ### 3. Compounding Flywheel
 
 Use when the user wants to understand how their needs, strengths, interests, and repeated efforts may form a long-term flywheel.
@@ -76,6 +107,9 @@ Focus:
 - emerging capability loops
 - where small repeated effort could compound
 
+Reference:
+- `references/compounding-flywheel.md`
+
 ### 4. Action Guide
 
 Use when the user has a lot of confusion, tension, or unresolved questions and wants concrete action.
@@ -84,6 +118,9 @@ Focus:
 - turn recurring confusion into next actions
 - separate what needs thought from what needs movement
 - identify one thing to continue, one to stop, one to test
+
+Reference:
+- `references/action-guide.md`
 
 ### 5. Blind Spot Exploration
 
@@ -95,6 +132,9 @@ Focus:
 - three blind spots that could change outcomes if addressed
 
 Be evidence-based and sharp, but do not overclaim.
+
+Reference:
+- `references/blind-spots.md`
 
 ### 6. MBTI-Style Pattern Reading
 
@@ -110,6 +150,9 @@ Always include a clear disclaimer:
 - it is not a formal personality assessment
 - uncertainty must be stated explicitly
 
+Reference:
+- `references/mbti-reading.md`
+
 ## Default Behavior
 
 If the user already asks for a specific lens, use that lens directly.
@@ -121,6 +164,15 @@ If the user asks a broad question, do this:
 3. End with `你还可以继续分析 X / Y / Z`.
 
 This is a direct-analysis skill, not a questionnaire skill.
+
+If the user says they do not know what to analyze, do not hand the choice back immediately. Instead:
+
+1. run a short overview pass first
+2. identify the 2-3 most promising lenses
+3. tell the user why those lenses fit their memo pattern
+4. continue with the best default lens now
+
+The user should feel guided, not bounced into homework.
 
 ## Time Windows
 
@@ -150,6 +202,36 @@ Recommended default pass:
 5. `tags` when the user’s tag structure itself is relevant to the analysis
 
 Do not drown the user in raw memo dumps. Pull only enough memo evidence to support the interpretation.
+
+Detailed query guidance:
+- `references/query-strategy.md`
+
+Lens-specific analysis guidance:
+
+- overview: `references/overview.md`
+- ACT: `references/act-lens.md`
+- compounding flywheel: `references/compounding-flywheel.md`
+- action guide: `references/action-guide.md`
+- blind spots: `references/blind-spots.md`
+- MBTI-style reading: `references/mbti-reading.md`
+
+## Evidence Discipline
+
+The value of this skill is not that it sounds deep. The value is that it makes sharp claims with proportional evidence.
+
+Use this calibration:
+
+- strong claim: repeated evidence across time windows, memo clusters, or tag patterns
+- medium claim: repeated evidence inside one time window
+- weak claim: one or two memos or only suggestive wording
+
+Match the wording to the evidence:
+
+- strong: `你反复在...`
+- medium: `你最近明显在...`
+- weak: `有一些迹象表明...`
+
+If the evidence is thin, say so and downgrade the ambition of the analysis.
 
 ## Report Structure
 
@@ -187,6 +269,27 @@ End with:
 - one thing to stop repeating
 - one thing worth tracking next
 - `你还可以继续分析 X / Y / Z`
+
+Full formatting guidance:
+- `references/output-template.md`
+
+## Analysis Standard
+
+Good analysis does all of the following:
+
+- compresses many notes into 1-3 real patterns
+- distinguishes recent weather from persistent structure
+- names contradictions instead of only naming topics
+- translates memo evidence into an implication
+- leaves the user with a sharper next move
+
+Bad analysis usually does one of these:
+
+- restates memo topics without interpretation
+- sounds profound but cannot point to evidence
+- gives generic coaching language
+- mistakes verbosity for nuance
+- treats one dramatic memo as a stable identity pattern
 
 ## Lens-Specific Additions
 
