@@ -2,83 +2,87 @@
 
 Production-ready flomo skills for agent workflows.
 
-这个仓库不是一个“大一统 flomo 框架”，而是三个边界清楚、面向真实使用场景的独立 skill：
+这个仓库提供 3 个可独立安装的 flomo agent skills，分别覆盖：
 
-- `flomo-local-api`
-- `flomo-web-crud`
-- `flomo-memo-to-markdown`
+- `mac` 上更快的本地登录态 + API 工作流
+- Windows / 非 `mac` 上的 Web UI 自动化工作流
+- 面向 AI / NotebookLM 的 Markdown 导出工作流
 
-适合放进 `skills` 生态，按任务安装，按平台选择。
+它不是一个“大而全”的 flomo 框架，而是一个清晰的技能仓库。根 README 是唯一入口，不再把说明拆散到多个子 README 里。
 
-## Why this repo
+## What is inside
 
-flomo 相关自动化其实有三种完全不同的工作方式：
+| Skill | 主要用途 | 适合谁 |
+| --- | --- | --- |
+| `flomo-local-api` | 查询、总结、创建、编辑、tag 复用 | `mac` 用户 |
+| `flomo-web-crud` | 通过浏览器做 live flomo CRUD | Windows / 非 `mac` 用户 |
+| `flomo-memo-to-markdown` | 导出 Markdown、tag 统计、NotebookLM 素材 | 需要归档或 AI 消费的用户 |
 
-1. 本地登录态 + API，适合高频查询和轻写入
-2. 真实 Web UI 自动化，适合 live account 操作
-3. Markdown 导出与归档，适合 AI / NotebookLM / 长文本消费
+## The important routing rule
 
-把它们硬塞进一个 skill，最后只会变成一个又慢又混乱的入口。
+`flomo-web-crud` 能做的事，`flomo-local-api` 在 `mac` 上基本都能做。
 
-这个仓库的目标很直接：
+区别不在“功能能不能做”，而在“用哪条路径更合理”：
 
-- `mac` 用户默认走更快的 `flomo-local-api`
-- 非 `mac` 用户默认走 `flomo-web-crud`
-- 导出场景单独走 `flomo-memo-to-markdown`
+- 对 `mac` 用户，默认只需要安装 `flomo-local-api`
+- 对 Windows 或其他非 `mac` 用户，默认安装 `flomo-web-crud`
+- 对导出场景，无论平台，直接用 `flomo-memo-to-markdown`
 
-## Choose the right skill
+换句话说：
 
-| 你的目标 | 推荐 skill | 适合谁 | 为什么 |
-| --- | --- | --- | --- |
-| 查 memo、总结最近在想什么、快速创建或编辑 memo | `flomo-local-api` | `mac` 用户 | 走本地登录态 + API，速度快很多，适合日常高频使用 |
-| 在真实 flomo Web 页面里操作 live account | `flomo-web-crud` | 任意平台，尤其非 `mac` | 不依赖官方 API，直接复用已登录浏览器 |
-| 导出 Markdown、tag 统计、NotebookLM / AI 素材 | `flomo-memo-to-markdown` | `mac` 用户 | 专门做导出与归档，不把 CRUD 和导出混成一团 |
+- `flomo-local-api` 是 `mac` 用户的默认主力技能
+- `flomo-web-crud` 主要是给 Windows 用户和浏览器场景准备的
+- `flomo-memo-to-markdown` 是独立导出技能，不是 CRUD 附属能力
+
+## Why `flomo-local-api` is better on mac
+
+如果你在 `mac` 上，优先用 `flomo-local-api`。原因很实际：
+
+1. 更快  
+   走本地登录态 + API，不需要打开 flomo Web 页面，不需要浏览器自动化。
+
+2. 更稳  
+   不依赖 UI 结构，不会因为按钮位置、弹窗状态或页面布局变化而变脆。
+
+3. 更适合高频使用  
+   查 memo、总结最近想法、快速写一条 memo，这些日常动作都比 Web 自动化顺手很多。
+
+4. 写 memo 时会复用你现有的 tag 体系  
+   这是 `flomo-local-api` 很重要的优点。它会先扫描你已有的 tag，再优先复用成熟 tag，而不是随手新造一堆新标签。长期用下来，检索质量会明显更好。
 
 ## Typical cases
 
-这几个 case 基本覆盖了大多数真实使用场景：
-
-| Case | 应该用哪个 skill | 原因 |
+| 真实场景 | 推荐 skill | 为什么 |
 | --- | --- | --- |
-| “帮我看看最近 30 天我在反复写什么” | `flomo-local-api` | 这是查询 + 总结，不需要 Web UI |
-| “把这条 flomo memo 改掉，或者直接删掉” | `flomo-web-crud` | 这是 live account 操作，尤其删除必须走明确的 Web UI 路径 |
-| “导出 2025 年的 memo，按季度拆分，给 NotebookLM 用” | `flomo-memo-to-markdown` | 这是标准导出场景，不该走 CRUD skill |
-| “我在 Windows 上，只想查几条 flomo memo” | `flomo-web-crud` | 非 `mac` 默认走 Web UI |
-| “我在 Mac 上高频写 memo，还想复用已有 tag” | `flomo-local-api` | 本地 API 更快，也更适合 tag reuse 工作流 |
-| “我想把 flomo 当成长期知识输入源喂给 AI” | `flomo-memo-to-markdown` | 这类需求的核心是稳定导出和 tag 统计 |
-
-## Platform guidance
-
-- `mac` 用户：默认优先 `flomo-local-api`
-- 非 `mac` 用户：默认优先 `flomo-web-crud`
-- 不管什么平台，只要目标是导出 Markdown：用 `flomo-memo-to-markdown`
+| “帮我看看最近 30 天我在反复写什么” | `flomo-local-api` | 这是标准查询 + 总结场景，`mac` 上没必要走 Web UI |
+| “我想快速记一条 memo，并尽量沿用我已有的 tag” | `flomo-local-api` | 它会先看已有 tag，再写入，更适合长期维护 tag 体系 |
+| “我在 Windows 上，想查几条 memo 再改掉其中一条” | `flomo-web-crud` | 非 `mac` 默认走浏览器路径 |
+| “我想删掉一条 flomo memo” | `flomo-web-crud` | 删除是 live account 操作，Web UI 路径更自然 |
+| “导出 2025 年 memo，按季度拆分，喂给 NotebookLM” | `flomo-memo-to-markdown` | 这是独立导出场景，不该混进 CRUD skill |
+| “我想把 flomo 当成长周期知识输入源喂给 AI” | `flomo-memo-to-markdown` | 重点是 Markdown 切分和 tag 统计，不是交互式查改 |
 
 ## Installation
 
-先装你真正需要的 skill。没必要一口气装全部。
+### mac 用户
 
-### Install `flomo-local-api`
+大多数情况下，你只需要安装 `flomo-local-api`：
 
 ```bash
 npx skills add Undertone0809/flomo-skills --skill flomo-local-api
 ```
 
-### Install `flomo-web-crud`
-
-```bash
-npx skills add Undertone0809/flomo-skills --skill flomo-web-crud
-```
-
-### Install `flomo-memo-to-markdown`
+如果你还需要导出 Markdown，再额外安装：
 
 ```bash
 npx skills add Undertone0809/flomo-skills --skill flomo-memo-to-markdown
 ```
 
-如果你只是想先确认远端仓库能被识别，可以先跑：
+### Windows / 非 mac 用户
+
+默认安装 `flomo-web-crud`：
 
 ```bash
-npx skills add https://github.com/Undertone0809/flomo-skills --list --full-depth
+npx skills add Undertone0809/flomo-skills --skill flomo-web-crud
 ```
 
 ## Skill details
@@ -88,23 +92,21 @@ npx skills add https://github.com/Undertone0809/flomo-skills --list --full-depth
 - 面向 `mac`
 - 依赖本地 flomo 登录态
 - 负责查询、总结、创建、编辑、tag 复用
-- 不负责 live Web UI 自动化
+- 写 memo 时优先复用你现有的 tag
 - 不负责删除 memo
 
 入口：
-- [README.md](./.agents/flomo-local-api/README.md)
 - [SKILL.md](./.agents/flomo-local-api/SKILL.md)
 
 ### `flomo-web-crud`
 
-- 面向任意平台，尤其是非 `mac`
+- 面向任意平台，主要给 Windows / 非 `mac` 用户使用
 - 不依赖 flomo 官方 API
 - 依赖 Chrome MCP 和已登录浏览器
-- 负责 live Web UI 的 query / create / edit / delete
-- 不是默认的高频查询入口，只有在 Web UI 场景或本地 API 不可用时优先使用
+- 可以做 live Web UI 的 query / create / edit / delete
+- 在 `mac` 上不是默认入口，只在本地 API 不可用或必须走浏览器时使用
 
 入口：
-- [README.md](./.agents/flomo-web-crud/README.md)
 - [SKILL.md](./.agents/flomo-web-crud/SKILL.md)
 
 ### `flomo-memo-to-markdown`
@@ -115,7 +117,6 @@ npx skills add https://github.com/Undertone0809/flomo-skills --list --full-depth
 - 不承接“查找并修改一条 memo”这类交互
 
 入口：
-- [README.md](./.agents/flomo-memo-to-markdown/README.md)
 - [SKILL.md](./.agents/flomo-memo-to-markdown/SKILL.md)
 
 ## Repository layout
@@ -127,8 +128,14 @@ npx skills add https://github.com/Undertone0809/flomo-skills --list --full-depth
   flomo-memo-to-markdown/
 ```
 
-每个 skill 都自带自己的文档、配置、脚本和 references。这个仓库故意不做 `shared/`，因为这三个能力的用户任务边界本来就不同，强行抽象只会让入口变差。
+每个 skill 都自带自己的 `SKILL.md`、配置、脚本和 references。这个仓库故意不做 `shared/`，也不在各 skill 目录下再放重复 README，避免入口分裂。
 
 ## Discoverability
 
-这个仓库已经可以被 `skills` CLI 发现。公开仓库被正常安装后，也会逐步进入 [skills.sh](https://skills.sh/) 的可发现路径。
+可以先用这个命令确认远端仓库能被 `skills` CLI 正常识别：
+
+```bash
+npx skills add https://github.com/Undertone0809/flomo-skills --list --full-depth
+```
+
+公开仓库被正常安装后，也会逐步进入 [skills.sh](https://skills.sh/) 的可发现路径。
