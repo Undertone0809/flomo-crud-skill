@@ -49,6 +49,7 @@ Good follow-up queries:
 - one query for the loudest recent theme
 - one query for the clearest contradiction
 - one query for a long-term pattern that might still be shaping current notes
+- `tags` when tag share or container changes would make the judgment sharper
 
 You rarely need more than 2-3 targeted queries for a strong overview.
 
@@ -87,6 +88,32 @@ Overview is strongest when it identifies one of these:
 - a persistent identity-level concern
 - a repeated tradeoff that explains many notes
 - a difference between what the user writes about and what they act on
+- a concrete tag or keyword spike that proves the stage really changed
+- a new project container that suddenly becomes dense
+
+## Preferred output style
+
+Do not default to a seven-section report.
+
+Better shape:
+
+1. one strong opening judgment
+2. `新出现的`
+3. `一直没变的`
+4. `真正的拉扯`
+5. optional: 2-3 concrete next directions only when the user wants orientation
+
+For overview, concrete evidence often belongs inside the judgment itself.
+
+Good:
+
+- `过去一年 Proj/* 只占 4.4%，最近 30 天升到 24.6%，说明主舞台换了。`
+- `Rudder 在过去一年几乎不存在，最近 30 天突然密集展开，说明这不是旧问题换名，而是一个新容器。`
+
+Bad:
+
+- `## 证据`
+- three bullets that just restate what the judgment already should have said
 
 ## Common mistakes
 
@@ -94,7 +121,7 @@ Overview is strongest when it identifies one of these:
 - naming too many themes
 - skipping the short-term vs long-term comparison
 - describing everything as equally important
-- ending without a next direction
+- ending without a next direction when the user asked for orientation
 
 ## Common mistake
 

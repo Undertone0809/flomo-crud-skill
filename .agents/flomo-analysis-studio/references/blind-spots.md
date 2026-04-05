@@ -45,6 +45,8 @@ You want each blind spot to have:
 - proof
 - consequence
 
+The proof can be compact, but it must travel with the blind spot itself. Do not explain the world for 20 lines and then finally reach the blind spot.
+
 ## Analysis procedure
 
 ### Step 1. Look for contradiction
@@ -89,6 +91,32 @@ After the three blind spots, tell the user the single thing most worth stopping 
 
 `Three Blind Spots`
 
+## Preferred output style
+
+Keep the answer short enough that the user can feel the hit immediately.
+
+Better shape:
+
+1. one-sentence diagnosis
+2. blind spot 1
+3. blind spot 2
+4. blind spot 3
+5. `最该停止重复的`
+
+Each blind spot should usually fit in one compact paragraph:
+
+- what the blind spot is
+- why it matters
+- the supporting memo pattern
+
+Avoid generic sections like:
+
+- `价值与决策信号`
+- `短期 vs 长期`
+- `下一步`
+
+unless they are doing real work for this specific answer.
+
 ## Evidence standard
 
 Blind spot claims need stronger evidence than normal summary claims.
@@ -115,3 +143,4 @@ The user should feel challenged, not theatrically judged.
 - confusing personality trait with blind spot
 - using harsh language as a substitute for evidence
 - giving three variants of the same blind spot
+- taking too long to get to the actual blind spots

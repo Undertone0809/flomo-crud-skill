@@ -50,12 +50,12 @@ The right sequence is:
 2. gather just enough flomo evidence through `flomo-local-api`
 3. synthesize patterns across time windows
 4. produce a sharp, evidence-based analysis
-5. suggest the next 2-3 lenses worth exploring
+5. only suggest next directions when that actually helps the user
 
 Before going deep, consult:
 
 - `references/query-strategy.md` for how to use `flomo-local-api` well
-- `references/output-template.md` for the fixed report structure
+- `references/output-template.md` for output shapes and formatting guidance
 - the specific lens reference file for the chosen mode
 
 Do not skip the lens reference. Each lens file contains:
@@ -160,8 +160,8 @@ If the user already asks for a specific lens, use that lens directly.
 If the user asks a broad question, do this:
 
 1. Run a broad overview analysis now, do not stop to ask for a lens first.
-2. At the top of the answer, briefly tell the user which 2-3 additional lenses are most worth exploring next.
-3. End with `你还可以继续分析 X / Y / Z`.
+2. Only offer 2-3 next directions if the user is clearly asking for orientation rather than just one answer.
+3. If you offer next directions, make them concrete and specific to the memo pattern, not generic lens names.
 
 This is a direct-analysis skill, not a questionnaire skill.
 
@@ -173,6 +173,12 @@ If the user says they do not know what to analyze, do not hand the choice back i
 4. continue with the best default lens now
 
 The user should feel guided, not bounced into homework.
+
+If the user already asked a specific lens question such as blind spots, MBTI, or flywheel:
+
+- answer that question directly
+- do not force extra sections that do not help
+- do not append generic recommendations for other analyses unless the user asked for them
 
 ## Time Windows
 
@@ -233,44 +239,40 @@ Match the wording to the evidence:
 
 If the evidence is thin, say so and downgrade the ambition of the analysis.
 
-## Report Structure
+## Output Shape
 
-Use this fixed structure by default:
+Do not force every answer into the same skeleton.
 
-### 1. One-Line Read
+This skill became worse when it over-standardised the output. The user usually wants a strong read, not a reusable report shell.
 
-One sentence on what seems most true right now.
+Default rule:
 
-### 2. What This Period Is Really About
+- pick the output shape that best fits the lens and the question
+- keep only the sections that materially help
+- prefer density and specificity over symmetry
+- weave evidence into the judgment by default
 
-Name the current core themes.
+Only break evidence into its own section when:
 
-### 3. Repeated Tensions
+- the user explicitly asks for evidence separately
+- the answer would become hard to follow without a short evidence block
+- you are making a sharp claim that needs a visible proof cluster
 
-Point out recurring contradictions, loops, or unresolved pulls.
+Good output usually feels like:
 
-### 4. Values And Decision Signals
+- a strong opening judgment
+- a few high-signal points
+- concrete tag, keyword, or time-window differences where useful
+- one sharp ending move if the user asked for guidance
 
-Infer what the user appears to value or optimize for.
+Bad output usually feels like:
 
-### 5. Short-Term Vs Long-Term Change
+- the same headings every time
+- obvious filler sections
+- generic values language
+- evidence isolated from the claims it supports
 
-Show what is new, what is persistent, and what is fading.
-
-### 6. Evidence Memos
-
-List a few supporting memos or memo patterns. Keep them concise.
-
-### 7. Next Useful Direction
-
-End with:
-
-- one thing to keep leaning into
-- one thing to stop repeating
-- one thing worth tracking next
-- `你还可以继续分析 X / Y / Z`
-
-Full formatting guidance:
+Full output guidance:
 - `references/output-template.md`
 
 ## Analysis Standard
@@ -293,13 +295,16 @@ Bad analysis usually does one of these:
 
 ## Lens-Specific Additions
 
-Keep the fixed structure above, then add one lens-specific section when needed:
+Use the native shape of the lens instead of bolting every lens onto one master outline.
 
-- ACT lens: `What You May Not Need To React To`
-- Compounding flywheel: `Where Your Flywheel Might Be`
-- Action guide: `What To Do Next`
-- Blind spot exploration: `Three Blind Spots`
-- MBTI-style reading: `Personality Hypothesis And Uncertainty`
+Examples:
+
+- overview: opening judgment, what is new vs structural, what the shift means, optionally next concrete directions
+- ACT lens: hook, fusion, what may not need reaction, one values-based move
+- compounding flywheel: opening verdict, one or two believable flywheels, why they compound, what blocks them, where to double down
+- action guide: bottleneck, what is overthought, one keep / one stop / one test
+- blind spot exploration: three blind spots, why each matters, one thing to stop repeating
+- MBTI-style reading: main hypothesis, why it fits, plausible alternative, uncertainty boundary
 
 ## Tone
 
@@ -309,6 +314,7 @@ Be a sharp, evidence-based reflection coach.
 - not clinical
 - not mystical
 - not diagnostic
+- not rigidly templated
 
 You can point out blind spots, contradictions, and avoidance patterns directly, but every strong claim should feel anchored in memo evidence.
 

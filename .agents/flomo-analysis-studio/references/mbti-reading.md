@@ -91,6 +91,33 @@ Good uncertainty language:
 - `你的 memo 很偏内省，所以 I/E 的信号比 T/F 更清楚。`
 - `这些笔记更能说明你的注意力风格，不足以把判断功能说死。`
 
+## Preferred output style
+
+Do not reuse the overview structure here.
+
+Better shape:
+
+1. opening guess with short disclaimer
+2. why this main hypothesis fits
+3. why the alternative is still plausible
+4. where the uncertainty really is
+
+This should read like:
+
+- a direct pattern reading
+- not a psychology report
+- not a generic self-analysis template with MBTI pasted in
+
+Good opening:
+
+- `老实猜：主假设更像 INFP，备选是 INFJ。不是正式测评，只是从 memo 的注意力模式来读。`
+
+Bad opening:
+
+- `## 一句话判断`
+- `## 这段时间真正的主题`
+- `## 价值与决策信号`
+
 ## Useful section title
 
 `Personality Hypothesis And Uncertainty`
@@ -111,3 +138,4 @@ Do not state one type as final truth.
 - skipping uncertainty
 - forcing one exact type when the evidence only supports a family
 - confusing intellectual interests with MBTI function evidence
+- reusing the same section headings as overview or blind spots

@@ -119,6 +119,36 @@ Each flywheel should include:
 - repeated behavior
 - likely compounding path
 
+## Preferred output style
+
+Keep this lens strategic and concrete.
+
+Better shape:
+
+1. opening verdict
+2. `最可能复利的主线`
+3. `为什么它会复利`
+4. `卡点`
+5. `接下来该加码什么`
+
+Do not fall back to generic sections like:
+
+- `价值与决策信号`
+- `证据`
+- `下一步`
+
+unless they materially improve this specific answer.
+
+For this lens, the mechanism matters more than the category.
+
+Good:
+
+- `它会复利，不是因为你最近写得多，而是因为你在这个主题上同时沉淀了判断、系统和表达。`
+
+Bad:
+
+- `你很重视成长和系统，所以这可能是你的飞轮。`
+
 ## Good interpretation moves
 
 - `你反复回到这个主题，不像在“消费兴趣”，更像在自然搭建自己的长期工具箱。`

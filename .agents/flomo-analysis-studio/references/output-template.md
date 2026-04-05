@@ -1,115 +1,173 @@
-# Output Template
+# Output Shapes
 
-Use this as the default response structure unless the user asks for a different format.
+Do not use one fixed template for every question.
 
-## Required structure
+The user feedback on this skill was explicit: when every answer used the same sections, the result felt stiff, obvious, and low-value.
 
-### 1. One-Line Read
+The right output is the one that delivers the strongest judgment with the least ceremony.
 
-One sentence. Direct. No throat-clearing.
+## Core principles
 
-Example:
-- “你最近最核心的状态，不是单纯忙，而是在几个高价值方向之间持续拉扯，导致行动和反思都很多，但收束不够。”
+- lead with the main read fast
+- make the useful point, not the complete taxonomy
+- integrate evidence into claims by default
+- use concrete deltas when they sharpen the point
+- only include a “next step” if the user asked for guidance
+- only suggest other analyses if the user asked for orientation
 
-### 2. What This Period Is Really About
+Concrete deltas are often more valuable than generic summaries:
 
-Name 2-4 themes, not 10 themes.
+- tag share changes
+- new keyword spikes
+- one container appearing suddenly
+- one old theme fading
+- a contradiction that exists across 30 and 365 days
 
-For each theme:
-- name it crisply
-- say why it matters
-- keep it short
+## Default evidence rule
 
-### 3. Repeated Tensions
+Prefer embedded evidence:
 
-This section matters a lot.
+- `这不是泛泛的 AI 兴奋。过去一年里 Proj/* 只占 4.4%，最近 30 天升到 24.6%。`
+- `Rudder 在过去一年是 0，最近 30 天突然出现 29 次，这说明它不是旧问题换名字，而是新容器。`
 
-Look for:
-- wanting two incompatible things
-- insight repeated without action
-- ambition repeatedly colliding with fear, guilt, distraction, or exhaustion
+Use a separate evidence block only when:
 
-### 4. Values And Decision Signals
+- the user explicitly asks for evidence
+- the lens depends on visibly stacked proof, such as blind spots
+- the argument would become muddy without a compact proof cluster
 
-Infer what the user appears to optimize for:
-- autonomy
-- craft
-- speed
-- recognition
-- depth
-- leverage
-- belonging
+## Preferred shapes by lens
 
-Do not use abstract labels without evidence.
+### Overview
 
-### 5. Short-Term Vs Long-Term Change
+Use a judgment-led shape.
 
-Explain:
-- what feels new
-- what has been there for a long time
-- what may be fading
-
-This is where the 30/90/365 comparison should show up.
-
-### 6. Evidence Memos
-
-Do not paste huge memo bodies.
-
-Good evidence:
-- short quoted fragment
-- short paraphrase
-- memo cluster pattern
-
-Use 3-6 evidence items, not 15.
-
-### 7. Next Useful Direction
-
-Always include:
-- one thing to keep leaning into
-- one thing to stop repeating
-- one thing worth tracking next
-- `你还可以继续分析 X / Y / Z`
-
-## Default rendering pattern
-
-Use a compact report, not a long essay.
-
-Recommended shape:
+Recommended pattern:
 
 ```markdown
-## 一句话判断
-...
+[opening verdict]
 
-## 这段时间真正的主题
-- ...
+**新出现的**
 - ...
 - ...
 
-## 反复出现的拉扯
+**一直没变的**
 - ...
 - ...
 
-## 价值与决策信号
+**真正的拉扯**
 - ...
 - ...
 
-## 短期 vs 长期
-- ...
-- ...
-
-## 证据
-- ...
-- ...
-- ...
-
-## 下一步
-- 继续：
-- 停止：
-- 追踪：
-- 你还可以继续分析 X / Y / Z
+[optional: 2-3 concrete next directions only if the user asked for orientation]
 ```
 
-Keep headings stable so the user can compare future analyses.
+For overview, specific shifts often matter more than neat headings. It is good to include tag ratios, keyword bursts, or container changes when they make the thesis sharper.
+
+### Blind spots
+
+Keep it tight.
+
+Recommended pattern:
+
+```markdown
+[one-sentence diagnosis]
+
+**盲区 1**
+...
+
+**盲区 2**
+...
+
+**盲区 3**
+...
+
+**最该停止重复的**
+...
+```
+
+Do not preface blind spots with too much setup. The user asked for the blind spots.
+
+### MBTI-style reading
+
+Make it feel like a direct read, not a report.
+
+Recommended pattern:
+
+```markdown
+[main hypothesis + short disclaimer]
+
+为什么更像这个：
+- ...
+- ...
+
+为什么不是那么确定：
+- ...
+
+备选解释：
+- ...
+```
+
+### Compounding flywheel
+
+Keep it strategic and mechanism-heavy.
+
+Recommended pattern:
+
+```markdown
+[opening verdict]
+
+**最可能复利的主线**
+...
+
+**为什么它会复利**
+- ...
+- ...
+
+**卡点**
+- ...
+
+**接下来该加码什么**
+...
+```
+
+### Action guide
+
+Make it operational.
+
+Recommended pattern:
+
+```markdown
+[what is actually stuck]
+
+**继续**
+...
+
+**停止**
+...
+
+**测试**
+...
+```
+
+### ACT lens
+
+Keep it psychologically sharp but practical.
+
+Recommended pattern:
+
+```markdown
+[what keeps hooking them]
+
+**你可能不必立刻反应的**
+...
+
+**真正还重要的**
+...
+
+**一个值导向动作**
+...
+```
 
 ## Voice rules
 
@@ -125,12 +183,15 @@ Bad output:
 - “你很重视成长和自我实现”
 - giant memo paraphrases
 - generic encouragement
+- same headings every time
+- section titles that say less than the content
 
 Good output:
 - identifies one real pattern
 - names one real contradiction
 - shows why the contradiction matters
 - leaves the user with one useful move
+- sounds like a judgment, not a form
 
 ## Evidence formatting
 
@@ -154,32 +215,22 @@ Bad evidence bullets:
 - vague claims like `你很重视成长`
 - unsupported labels like `你是高敏感人格`
 
-## What each section must do
+## Two important defaults
 
-### One-Line Read
+### Do not force “next analysis”
 
-Compress the entire analysis into one sentence the user can remember.
+If the user asked one question, answer that question well.
 
-### What This Period Is Really About
+Only suggest next analysis directions when:
 
-Name the 2-4 dominant themes. Do not confuse topics with themes. "AI" is a topic. "Trying to build leverage from personal systems" is a theme.
+- the user said they do not know what to analyze
+- the user explicitly asks what else is worth looking at
+- the overview answer naturally reveals 2-3 highly concrete paths
 
-### Repeated Tensions
+Even then, do not list generic lens names unless the lens name itself adds value.
 
-This section should carry the psychological weight of the report. Name the pull against pull.
+### Do not force “价值与决策信号”
 
-### Values And Decision Signals
+Sometimes this section is useful. Often it is filler.
 
-Infer what the user appears to optimise for, and show the evidence behind that inference.
-
-### Short-Term Vs Long-Term Change
-
-This section is where the 30/90/365 analysis proves it is not a generic summary.
-
-### Evidence
-
-Use 3-6 bullets. Enough to feel grounded, not enough to feel like raw data export.
-
-### Next Useful Direction
-
-The user should leave with momentum, not just recognition.
+If values can be named sharply, include them inside the main analysis. If not, skip them.
